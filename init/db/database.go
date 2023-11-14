@@ -14,7 +14,7 @@ import (
 var lock = &sync.Mutex{}
 var postgresConnection *sql.DB
 
-func ConnectionToPostgres() *sql.DB {
+func connectionToPostgres() *sql.DB {
 	if postgresConnection == nil {
 		lock.Lock()
 		defer lock.Unlock()
@@ -37,4 +37,8 @@ func ConnectionToPostgres() *sql.DB {
 		}
 	}
 	return postgresConnection
+}
+
+func InstanceDB() *sql.DB {
+	return connectionToPostgres()
 }
