@@ -48,7 +48,7 @@ func Login(c *fiber.Ctx) error {
 		return c.Status(fiber.StatusBadRequest).SendString("user not found")
 	}
 
-	if err = user.CheckPassword(payload.Password); err != nil {
+	if err = userList[0].CheckPassword(payload.Password); err != nil {
 		logger.Error("invalid credentials", err)
 		return c.Status(fiber.StatusBadRequest).SendString("invalid credentials")
 	}

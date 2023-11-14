@@ -16,6 +16,7 @@ type User struct {
 	Password string `json:"password"`
 }
 
+// todo: implementar validacao token
 func (u *User) CreateUser(db *sql.DB) error {
 	var queryBuilder strings.Builder
 
